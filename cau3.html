@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu 3 - JSON</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .course{
+            border: 2px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: whitesmoke;
+        }
+
+        h2{
+            color: #2c3e50;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Danh sách khóa học tiếng Anh</h1>
+
+    <div id="course-list"></div>
+
+    <script>
+
+        // Chuỗi JSON gồm 4 đối tượng
+        let jsonData = `[
+            {
+                "tenKhoaHoc": "Tiếng Anh Giao Tiếp",
+                "moTa": "Khóa học luyện giao tiếp cơ bản",
+                "hocPhi": "2.000.000 VNĐ",
+                "thoiGianKhaiGiang": "01/06/2026"
+            },
+
+            {
+                "tenKhoaHoc": "IELTS Foundation",
+                "moTa": "Luyện kỹ năng IELTS nền tảng",
+                "hocPhi": "3.500.000 VNĐ",
+                "thoiGianKhaiGiang": "10/06/2026"
+            },
+
+            {
+                "tenKhoaHoc": "TOEIC 4 Kỹ Năng",
+                "moTa": "Phát triển đầy đủ 4 kỹ năng",
+                "hocPhi": "4.000.000 VNĐ",
+                "thoiGianKhaiGiang": "15/06/2026"
+            },
+
+            {
+                "tenKhoaHoc": "Tiếng Anh Cho Người Đi Làm",
+                "moTa": "Tiếng Anh giao tiếp công sở",
+                "hocPhi": "2.800.000 VNĐ",
+                "thoiGianKhaiGiang": "20/06/2026"
+            }
+        ]`;
+
+        // Chuyển JSON thành object
+        let courses = JSON.parse(jsonData);
+
+        let i = 0;
+
+        // Lấy div hiển thị
+        let courseList = document.getElementById("course-list");
+
+        // Dùng vòng lặp while
+        while(i < courses.length){
+
+            courseList.innerHTML += `
+                <div class="course">
+
+                    <h2>${courses[i].tenKhoaHoc}</h2>
+
+                    <p>
+                        <strong>Mô tả:</strong>
+                        ${courses[i].moTa}
+                    </p>
+
+                    <p>
+                        <strong>Học phí:</strong>
+                        ${courses[i].hocPhi}
+                    </p>
+
+                    <p>
+                        <strong>Khai giảng:</strong>
+                        ${courses[i].thoiGianKhaiGiang}
+                    </p>
+
+                </div>
+            `;
+
+            i++;
+        }
+
+    </script>
+
+</body>
+</html>

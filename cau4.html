@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>cau4.html</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container{
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group{
+            margin-bottom: 15px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #218838;
+        }
+
+        /* Điện thoại */
+        @media screen and (max-width: 414px){
+            .container{
+                max-width: 100%;
+            }
+        }
+
+        /* Máy tính bảng */
+        @media screen and (min-width: 415px) and (max-width: 1024px){
+            .container{
+                max-width: 700px;
+            }
+        }
+
+        /* Máy tính */
+        @media screen and (min-width: 1025px){
+            .container{
+                max-width: 500px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>ĐĂNG KÝ KHÓA HỌC</h2>
+
+        <form id="courseForm">
+
+            <div class="form-group">
+                <label>Họ và tên:</label>
+                <input type="text" id="fullname" placeholder="Nhập họ tên...">
+            </div>
+
+            <div class="form-group">
+                <label>Địa chỉ email:</label>
+                <input type="email" id="email" placeholder="example@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label>Số điện thoại:</label>
+                <input type="tel" id="phone" placeholder="Nhập số điện thoại...">
+            </div>
+
+            <div class="form-group">
+                <label>Khóa học muốn đăng ký:</label>
+                <select id="course">
+                    <option value="">-- Chọn khóa học --</option>
+                    <option value="web"> Lập trình Web </option>
+                    <option value="network"> Quản trị mạng </option>
+                    <option value="data"> Khoa học dữ liệu </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Thời gian ưu tiên học:</label>
+                <input type="text" id="time" placeholder="Ví dụ: Sáng thứ 2, 4, 6">
+            </div>
+
+            <button type="submit"> Gửi đăng ký </button>
+
+        </form>
+
+    </div>
+
+    <script>
+
+        document.getElementById("courseForm").addEventListener("submit", function(e){
+
+            e.preventDefault();
+
+            let fullname = document.getElementById("fullname").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let course = document.getElementById("course").value;
+            let time = document.getElementById("time").value.trim();
+
+            if( fullname === "" ||email === "" ||phone === "" ||course === "" ||time === "")
+            {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!emailPattern.test(email))
+            {
+                alert("Email không hợp lệ!");
+                return;
+            }
+
+            let phonePattern =/^[0-9]{10}$/;
+
+            if(!phonePattern.test(phone))
+            {
+                alert("Số điện thoại phải gồm 10 số!");
+                return;
+            }
+
+            alert("Đăng ký khóa học thành công!");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
